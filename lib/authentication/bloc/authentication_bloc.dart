@@ -3,6 +3,7 @@ import 'dart:ui';
 
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:bloc/bloc.dart';
+import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:user_repository/user_repository.dart';
 
@@ -17,7 +18,7 @@ class AuthenticationBloc
     required UserRepository userRepository,
   })  : _authenticationRepository = authenticationRepository,
         _userRepository = userRepository,
-        super((const AuthenticationState.uknown())) {
+        super((AuthenticationState.unknown())) {
     on<OnAuthenticationStatusChanged>(_onAuthenticationStatusChanged);
     on<OnLogoutRequested>(_onLogoutRequested);
     _authenticationStatusSubscription = _authenticationRepository.status
@@ -40,16 +41,18 @@ class AuthenticationBloc
       Emitter<AuthenticationState> emit) async {
     switch (event.status) {
       case AuthenticationStatus.unauthenticated:
-        return emit(const AuthenticationState.unauthenticated());
+        return emit(
+            state.copyWith(status: AuthenticationStatus.unauthenticated));
       case AuthenticationStatus.authenticated:
         final user = await _tryGetUser();
         return emit(
           user != null
-              ? const AuthenticationState.authenticated()
-              : const AuthenticationState.unauthenticated(),
+              ? state.copyWith(
+                  status: AuthenticationStatus.authenticated, user: user)
+              : state.copyWith(status: AuthenticationStatus.unauthenticated),
         );
       case AuthenticationStatus.unknown:
-        return emit(const AuthenticationState.uknown());
+        return emit(AuthenticationState.unknown());
     }
   }
 
