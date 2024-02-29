@@ -480,10 +480,10 @@ abstract class OnLoginSubmitted implements LoginEvent {
 
 /// @nodoc
 mixin _$LoginState {
-  FormzSubmissionStatus? get formzStatus => throw _privateConstructorUsedError;
+  FormzSubmissionStatus get formzStatus => throw _privateConstructorUsedError;
   Username get username => throw _privateConstructorUsedError;
   Password get password => throw _privateConstructorUsedError;
-  bool? get isValid => throw _privateConstructorUsedError;
+  bool get isValid => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $LoginStateCopyWith<LoginState> get copyWith =>
@@ -497,10 +497,10 @@ abstract class $LoginStateCopyWith<$Res> {
       _$LoginStateCopyWithImpl<$Res, LoginState>;
   @useResult
   $Res call(
-      {FormzSubmissionStatus? formzStatus,
+      {FormzSubmissionStatus formzStatus,
       Username username,
       Password password,
-      bool? isValid});
+      bool isValid});
 }
 
 /// @nodoc
@@ -516,16 +516,16 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? formzStatus = freezed,
+    Object? formzStatus = null,
     Object? username = null,
     Object? password = null,
-    Object? isValid = freezed,
+    Object? isValid = null,
   }) {
     return _then(_value.copyWith(
-      formzStatus: freezed == formzStatus
+      formzStatus: null == formzStatus
           ? _value.formzStatus
           : formzStatus // ignore: cast_nullable_to_non_nullable
-              as FormzSubmissionStatus?,
+              as FormzSubmissionStatus,
       username: null == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
@@ -534,10 +534,10 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as Password,
-      isValid: freezed == isValid
+      isValid: null == isValid
           ? _value.isValid
           : isValid // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as bool,
     ) as $Val);
   }
 }
@@ -551,10 +551,10 @@ abstract class _$$LoginStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {FormzSubmissionStatus? formzStatus,
+      {FormzSubmissionStatus formzStatus,
       Username username,
       Password password,
-      bool? isValid});
+      bool isValid});
 }
 
 /// @nodoc
@@ -568,16 +568,16 @@ class __$$LoginStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? formzStatus = freezed,
+    Object? formzStatus = null,
     Object? username = null,
     Object? password = null,
-    Object? isValid = freezed,
+    Object? isValid = null,
   }) {
     return _then(_$LoginStateImpl(
-      formzStatus: freezed == formzStatus
+      formzStatus: null == formzStatus
           ? _value.formzStatus
           : formzStatus // ignore: cast_nullable_to_non_nullable
-              as FormzSubmissionStatus?,
+              as FormzSubmissionStatus,
       username: null == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
@@ -586,10 +586,10 @@ class __$$LoginStateImplCopyWithImpl<$Res>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as Password,
-      isValid: freezed == isValid
+      isValid: null == isValid
           ? _value.isValid
           : isValid // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as bool,
     ));
   }
 }
@@ -601,17 +601,17 @@ class _$LoginStateImpl implements _LoginState {
       {this.formzStatus = FormzSubmissionStatus.initial,
       required this.username,
       required this.password,
-      this.isValid});
+      required this.isValid});
 
   @override
   @JsonKey()
-  final FormzSubmissionStatus? formzStatus;
+  final FormzSubmissionStatus formzStatus;
   @override
   final Username username;
   @override
   final Password password;
   @override
-  final bool? isValid;
+  final bool isValid;
 
   @override
   String toString() {
@@ -645,19 +645,19 @@ class _$LoginStateImpl implements _LoginState {
 
 abstract class _LoginState implements LoginState {
   const factory _LoginState(
-      {final FormzSubmissionStatus? formzStatus,
+      {final FormzSubmissionStatus formzStatus,
       required final Username username,
       required final Password password,
-      final bool? isValid}) = _$LoginStateImpl;
+      required final bool isValid}) = _$LoginStateImpl;
 
   @override
-  FormzSubmissionStatus? get formzStatus;
+  FormzSubmissionStatus get formzStatus;
   @override
   Username get username;
   @override
   Password get password;
   @override
-  bool? get isValid;
+  bool get isValid;
   @override
   @JsonKey(ignore: true)
   _$$LoginStateImplCopyWith<_$LoginStateImpl> get copyWith =>

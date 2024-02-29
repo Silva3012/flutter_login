@@ -13,9 +13,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginBloc({required AuthenticationRepository authenticationRepository})
       : _authenticationRepository = authenticationRepository,
         super(LoginState.initial()) {
-    on<LoginEvent>((event, emit) {
+    on<LoginEvent>((event, emit) async {
       event.map(onLoginUsernameChanged: (OnLoginUsernameChanged value) {
-        const username = Username.dirty();
+        final username = Username.dirty(value.username);
         emit(
           state.copyWith(
             username: username,
@@ -23,7 +23,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           ),
         );
       }, onPasswordChanged: (OnPasswordChanged value) {
-        const password = Password.dirty();
+        final password = Password.dirty(value.password);
         emit(
           state.copyWith(
             password: password,
@@ -31,14 +31,18 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           ),
         );
       }, onLoginSubmitted: (OnLoginSubmitted value) async {
-        if (state.isValid != null) {
-          emit(state.copyWith(formzStatus: FormzSubmissionStatus.inProgress));
+        if (state.isValid) {
+          emit(state.copyWith(
+            formzStatus: FormzSubmissionStatus.inProgress,
+          ));
           try {
             await _authenticationRepository.logIn(
               username: state.username.value,
               password: state.password.value,
             );
-            emit(state.copyWith(formzStatus: FormzSubmissionStatus.success));
+            emit(state.copyWith(
+              formzStatus: FormzSubmissionStatus.success,
+            ));
           } catch (_) {
             emit(state.copyWith(formzStatus: FormzSubmissionStatus.failure));
           }

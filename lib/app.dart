@@ -6,6 +6,7 @@ import 'package:flutter_login/splash/view/splash_page.dart';
 
 import 'package:user_repository/user_repository.dart';
 
+import 'home/view/home_page.dart';
 import 'login/view/view.dart';
 
 class App extends StatefulWidget {

@@ -19,19 +19,19 @@ mixin _$AuthenticationEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(AuthenticationStatus status) onStatusChanged,
-    required TResult Function(VoidCallback logOut) onLogoutRequested,
+    required TResult Function() onLogoutRequested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(AuthenticationStatus status)? onStatusChanged,
-    TResult? Function(VoidCallback logOut)? onLogoutRequested,
+    TResult? Function()? onLogoutRequested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(AuthenticationStatus status)? onStatusChanged,
-    TResult Function(VoidCallback logOut)? onLogoutRequested,
+    TResult Function()? onLogoutRequested,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -155,7 +155,7 @@ class _$OnAuthenticationStatusChangedImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(AuthenticationStatus status) onStatusChanged,
-    required TResult Function(VoidCallback logOut) onLogoutRequested,
+    required TResult Function() onLogoutRequested,
   }) {
     return onStatusChanged(status);
   }
@@ -164,7 +164,7 @@ class _$OnAuthenticationStatusChangedImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(AuthenticationStatus status)? onStatusChanged,
-    TResult? Function(VoidCallback logOut)? onLogoutRequested,
+    TResult? Function()? onLogoutRequested,
   }) {
     return onStatusChanged?.call(status);
   }
@@ -173,7 +173,7 @@ class _$OnAuthenticationStatusChangedImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(AuthenticationStatus status)? onStatusChanged,
-    TResult Function(VoidCallback logOut)? onLogoutRequested,
+    TResult Function()? onLogoutRequested,
     required TResult orElse(),
   }) {
     if (onStatusChanged != null) {
@@ -231,8 +231,6 @@ abstract class _$$OnLogoutRequestedImplCopyWith<$Res> {
   factory _$$OnLogoutRequestedImplCopyWith(_$OnLogoutRequestedImpl value,
           $Res Function(_$OnLogoutRequestedImpl) then) =
       __$$OnLogoutRequestedImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({VoidCallback logOut});
 }
 
 /// @nodoc
@@ -242,19 +240,6 @@ class __$$OnLogoutRequestedImplCopyWithImpl<$Res>
   __$$OnLogoutRequestedImplCopyWithImpl(_$OnLogoutRequestedImpl _value,
       $Res Function(_$OnLogoutRequestedImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? logOut = null,
-  }) {
-    return _then(_$OnLogoutRequestedImpl(
-      null == logOut
-          ? _value.logOut
-          : logOut // ignore: cast_nullable_to_non_nullable
-              as VoidCallback,
-    ));
-  }
 }
 
 /// @nodoc
@@ -262,70 +247,56 @@ class __$$OnLogoutRequestedImplCopyWithImpl<$Res>
 class _$OnLogoutRequestedImpl
     with DiagnosticableTreeMixin
     implements OnLogoutRequested {
-  const _$OnLogoutRequestedImpl(this.logOut);
-
-  @override
-  final VoidCallback logOut;
+  const _$OnLogoutRequestedImpl();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AuthenticationEvent.onLogoutRequested(logOut: $logOut)';
+    return 'AuthenticationEvent.onLogoutRequested()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties
-      ..add(
-          DiagnosticsProperty('type', 'AuthenticationEvent.onLogoutRequested'))
-      ..add(DiagnosticsProperty('logOut', logOut));
+    properties.add(
+        DiagnosticsProperty('type', 'AuthenticationEvent.onLogoutRequested'));
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$OnLogoutRequestedImpl &&
-            (identical(other.logOut, logOut) || other.logOut == logOut));
+        (other.runtimeType == runtimeType && other is _$OnLogoutRequestedImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, logOut);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$OnLogoutRequestedImplCopyWith<_$OnLogoutRequestedImpl> get copyWith =>
-      __$$OnLogoutRequestedImplCopyWithImpl<_$OnLogoutRequestedImpl>(
-          this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(AuthenticationStatus status) onStatusChanged,
-    required TResult Function(VoidCallback logOut) onLogoutRequested,
+    required TResult Function() onLogoutRequested,
   }) {
-    return onLogoutRequested(logOut);
+    return onLogoutRequested();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(AuthenticationStatus status)? onStatusChanged,
-    TResult? Function(VoidCallback logOut)? onLogoutRequested,
+    TResult? Function()? onLogoutRequested,
   }) {
-    return onLogoutRequested?.call(logOut);
+    return onLogoutRequested?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(AuthenticationStatus status)? onStatusChanged,
-    TResult Function(VoidCallback logOut)? onLogoutRequested,
+    TResult Function()? onLogoutRequested,
     required TResult orElse(),
   }) {
     if (onLogoutRequested != null) {
-      return onLogoutRequested(logOut);
+      return onLogoutRequested();
     }
     return orElse();
   }
@@ -364,13 +335,7 @@ class _$OnLogoutRequestedImpl
 }
 
 abstract class OnLogoutRequested implements AuthenticationEvent {
-  const factory OnLogoutRequested(final VoidCallback logOut) =
-      _$OnLogoutRequestedImpl;
-
-  VoidCallback get logOut;
-  @JsonKey(ignore: true)
-  _$$OnLogoutRequestedImplCopyWith<_$OnLogoutRequestedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  const factory OnLogoutRequested() = _$OnLogoutRequestedImpl;
 }
 
 /// @nodoc
