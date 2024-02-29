@@ -6,6 +6,8 @@ import 'package:flutter_login/splash/view/splash_page.dart';
 
 import 'package:user_repository/user_repository.dart';
 
+import 'login/view/view.dart';
+
 class App extends StatefulWidget {
   const App({super.key});
 
