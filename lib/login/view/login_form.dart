@@ -1,7 +1,9 @@
+// ignore_for_file: implementation_imports
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_login/login/bloc/login_bloc.dart';
 import 'package:formz/formz.dart';
+import 'package:login_core/src/application/login/login_bloc.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({super.key});

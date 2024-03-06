@@ -1,0 +1,22 @@
+name: login_models
+description: Login models
+
+publish_to: 'none' 
+
+version: 1.0.0+1
+
+environment:
+  sdk: '^3.2.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  freezed: ^2.4.7
+  formz: ^0.7.0
+  freezed_annotation: ^2.4.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+  build_runner: ^2.4.8

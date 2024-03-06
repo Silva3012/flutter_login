@@ -1,14 +1,15 @@
 import 'dart:async';
 
-import 'package:authentication_repository/authentication_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:user_repository/user_repository.dart';
+import 'package:login_core/src/repositories/authentication/authentication_repository.dart';
+import 'package:login_core/src/repositories/user/user_repository.dart';
+import 'package:login_models/src/dto/user/user_dto.dart';
 
+part 'authentication_bloc.freezed.dart';
 part 'authentication_event.dart';
 part 'authentication_state.dart';
-part 'authentication_bloc.freezed.dart';
 
 class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {

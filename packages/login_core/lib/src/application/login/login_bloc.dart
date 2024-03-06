@@ -1,9 +1,9 @@
-import 'package:authentication_repository/authentication_repository.dart';
 import 'package:bloc/bloc.dart';
-import 'package:flutter_login/login/models/password.dart';
-import 'package:flutter_login/login/models/username.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:login_models/src/formz_validation/username.dart';
+import 'package:login_models/src/formz_validation/password.dart';
+import '../../repositories/authentication/authentication_repository.dart';
 
 part 'login_event.dart';
 part 'login_state.dart';
@@ -14,7 +14,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       : _authenticationRepository = authenticationRepository,
         super(LoginState.initial()) {
     on<LoginEvent>((event, emit) async {
-      event.map(onLoginUsernameChanged: (OnLoginUsernameChanged value) {
+      await event.map(onLoginUsernameChanged: (OnLoginUsernameChanged value) {
         final username = Username.dirty(value.username);
         emit(
           state.copyWith(

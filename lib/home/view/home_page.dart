@@ -1,6 +1,8 @@
+// ignore_for_file: implementation_imports
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_login/authentication/bloc/authentication_bloc.dart';
+import 'package:login_core/src/application/authentication/authentication_bloc.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

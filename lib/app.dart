@@ -1,13 +1,13 @@
-import 'package:authentication_repository/authentication_repository.dart';
+// ignore_for_file: implementation_imports
+
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_login/authentication/bloc/authentication_bloc.dart';
+import 'package:login_core/src/repositories/authentication/authentication_repository.dart';
+import 'package:login_core/src/application/authentication/authentication_bloc.dart';
+import 'package:login_core/src/repositories/user/user_repository.dart';
 import 'package:flutter_login/splash/view/splash_page.dart';
-
-import 'package:user_repository/user_repository.dart';
-
 import 'home/view/home_page.dart';
 import 'login/view/view.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class App extends StatefulWidget {
   const App({super.key});

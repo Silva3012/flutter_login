@@ -1,4 +1,4 @@
-import 'package:user_repository/src/models/user_dto.dart';
+import 'package:login_models/src/dto/user/user_dto.dart';
 import 'package:uuid/uuid.dart';
 
 class UserRepository {
